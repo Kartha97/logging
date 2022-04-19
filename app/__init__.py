@@ -13,7 +13,7 @@ from flask_wtf.csrf import CSRFProtect
 
 from app.auth import auth
 from app.auth import auth
-from app.cli import create_database
+from app.cli import create_database, create_log_folder
 from app.context_processors import utility_text_processors
 from app.db import db
 from app.db.models import User
@@ -21,6 +21,8 @@ from app.exceptions import http_exceptions
 from app.simple_pages import simple_pages
 import logging
 from flask.logging import default_handler
+
+from logging.config import fileConfig
 
 login_manager = flask_login.LoginManager()
 
@@ -73,7 +75,10 @@ def create_app():
     if not os.path.exists(logdir):
         os.mkdir(logdir)
     # set name of the log file
-    log_file = os.path.join(logdir, 'info.log')
+    log_file = os.path.join(logdir, 'debug.log')
+
+    #log_file_config  = os.path.join(root, 'logging.cfg')
+    #fileConfig(log_file_config, defaults={'logfilename': log_file})
 
     handler = logging.FileHandler(log_file)
     # Create a log file formatter object to create the entry in the log
@@ -84,7 +89,7 @@ def create_app():
     # set the formatter for the log entry
     handler.setFormatter(formatter)
     # Set the logging level of the file handler object so that it logs INFO and up
-    handler.setLevel(logging.INFO)
+    handler.setLevel(logging.DEBUG)
     # Add the handler for the log entry
     app.logger.addHandler(handler)
 
@@ -131,7 +136,7 @@ def create_app():
             parts.append(part)
         line = " ".join(parts)
         #this triggers a log entry to be created with whatever is in the line variable
-        app.logger.info('this is the plain message')
+        app.logger.debug(line)
 
         return response
 

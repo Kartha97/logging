@@ -2,12 +2,23 @@
 
 [![Production Workflow](https://github.com/kaw393939/docker_flask/actions/workflows/prod.yml/badge.svg)](https://github.com/kaw393939/docker_flask/actions/workflows/prod.yml)
 
-* [Production Deployment](https://kwilliam-prod.herokuapp.com/)
+* [Production Deployment](https://karthat-logging-prod.herokuapp.com/)
 
 
 [![Development Workflow](https://github.com/kaw393939/docker_flask/actions/workflows/dev.yml/badge.svg)](https://github.com/kaw393939/docker_flask/actions/workflows/dev.yml)
 
-* [Developmental Deployment](https://kwilliam-dev.herokuapp.com/)
+* [Developmental Deployment](https://karthat-logging-dev.herokuapp.com/)
+
+## Screenshot of Running Program
+
+#### How i configured my app/\_\_init__.py file for logging.
+![Index Page of our Program](app/static/images/ss1.png)
+#### My logging.cfg file. this is file which I used for the configuration of the logging.
+![About page ofour running program](app/static/images/ss2.png)
+#### Output of my debug.log file.
+![Workflow Status](app/static/images/ss3.png)
+#### Test created for validating whether the log file is being created or not.
+![Index Page after deploying into heroku app](app/static/images/ss4.png)
 
 ## Setting up CI/CD
 
